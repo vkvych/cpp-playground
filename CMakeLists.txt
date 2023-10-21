@@ -4,12 +4,13 @@ project(cpp-playground VERSION 0.1.0 LANGUAGES C CXX)
 
 include(CTest)
 enable_testing()
+set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
 
-find_package(mqtt_cpp_iface REQUIRED)
+find_package(OpenSSL REQUIRED)
 
 add_executable(cpp-playground main.cpp)
 
-target_link_libraries(cpp-playground LINK_PUBLIC mqtt_cpp_iface::mqtt_cpp_iface)
+target_link_libraries(cpp-playground OpenSSL::Crypto)
 
 set(CPACK_PROJECT_NAME ${PROJECT_NAME})
 set(CPACK_PROJECT_VERSION ${PROJECT_VERSION})
